@@ -9,7 +9,9 @@ function App() {
   const [srcDoc, setSrcDoc] = useState('')
 
   useEffect(() => {
+    //i don't need timeout
     const timeout = setTimeout(() => {
+      //replace setSrcDoc with problemOne.test.js 
       setSrcDoc(`
         <html>
           <body></body>
@@ -18,7 +20,7 @@ function App() {
         </html>
       `)
     }, 250)
-
+    console.log(js);
     return () => clearTimeout(timeout)
   }, [js])
 
@@ -32,8 +34,9 @@ function App() {
           onChange={setJs}
         />
       </div>
-      <div className="pane">
-        <iframe
+      <div className="pane"> {/*this can be the response component */}
+        
+        <iframe //don't need this iframe
           srcDoc={srcDoc}
           title="output"
           sandbox="allow-scripts"
